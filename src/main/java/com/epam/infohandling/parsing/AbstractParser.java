@@ -1,5 +1,6 @@
 package com.epam.infohandling.parsing;
 
+import com.epam.infohandling.model.Component;
 import com.epam.infohandling.model.Composite;
 
 public abstract class AbstractParser implements Parser {
@@ -13,19 +14,5 @@ public abstract class AbstractParser implements Parser {
     protected Parser getSuccessor() {
         return successor;
     }
-
-    public Composite parse(String text) {
-        Composite composite = new Composite();
-        String[] parts = text.split(getSplitter());
-
-        for (String part : parts) {
-            Composite inner = getSuccessor().parse(part);
-            composite.add(inner);
-        }
-        return composite;
-    }
-
-    protected abstract String getSplitter();
-
 
 }
