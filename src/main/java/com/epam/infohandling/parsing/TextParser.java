@@ -4,8 +4,16 @@ import com.epam.infohandling.model.Composite;
 
 public class TextParser extends AbstractParser {
 
-    @Override
-    public Composite parse(String text) {
-        throw new UnsupportedOperationException();
+    private static final String SPLITTER = "\n";
+
+    TextParser(Parser successor) {
+        super(successor);
     }
+
+    @Override
+    protected String getSplitter() {
+        return SPLITTER;
+    }
+
+
 }

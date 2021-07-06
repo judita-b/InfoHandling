@@ -4,8 +4,14 @@ import com.epam.infohandling.model.Composite;
 
 public class SentenceParser extends AbstractParser {
 
+    private static final String SPLITTER = " ";
+
+    SentenceParser(Parser successor) {
+        super(successor);
+    }
+
     @Override
-    public Composite parse(String text) {
-        throw new UnsupportedOperationException();
+    protected String getSplitter() {
+        return SPLITTER;
     }
 }
