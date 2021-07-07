@@ -6,17 +6,20 @@ import com.epam.infohandling.model.Composite;
 public class ParagraphParser extends AbstractParser {
 
     private static final String SPLITTER = "[.|!|?]";
+    private static final String PARAGRAPH = "Paragraph";
 
     ParagraphParser(Parser successor) {
         super(successor);
     }
 
     public Composite parse(String text) {
-        Composite composite = new Composite();
+        text = text.trim();
+        Composite composite = new Composite(PARAGRAPH, text);
         String[] parts = text.split(SPLITTER);
 
         for (String part : parts) {
-            Component inner = getSuccessor().parse(part);
+            //String value = part + ".";
+            Component inner = getSuccessor().parse(part.trim());
             composite.add(inner);
         }
         return composite;

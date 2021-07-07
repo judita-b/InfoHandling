@@ -12,4 +12,9 @@ public class NonterminalExpression implements Expression {
     public void interpret(Context context) {
         context.pushValue(number);
     }
+
+//    @Override
+//    public String toString() {
+//        return String.valueOf(number);
+//    }
 }

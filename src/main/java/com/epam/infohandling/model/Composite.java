@@ -6,9 +6,18 @@ import java.util.List;
 public class Composite implements Component {
 
     private List<Component> components = new ArrayList<Component>();
+    private String name;
+    private String value;
+    private Composite parent;
+
+    public Composite(String name, String value) {
+        this.name = name;
+        this.value = value;
+    }
 
     @Override
     public void add(Component component) {
+        component.setParent(this);
         components.add(component);
     }
 
@@ -18,15 +27,53 @@ public class Composite implements Component {
     }
 
     @Override
-    public void operation() {
-        int size = components.size();
-        for (Component component: components) {
-            component.operation();
-        }
+    public Object getChild(int index) {
+        return components.get(index);
     }
 
     @Override
-    public Object getChild(int index) {
-        return components.get(index);
+    public int childrenCount() {
+        int size = components.size();
+        return size;
+    }
+
+    @Override
+    public boolean isLeaf() {
+        return false;
+    }
+
+    @Override
+    public Object getValue() {
+        return value;
+    }
+
+    @Override
+    public String getName() {
+        return name;
+    }
+
+    @Override
+    public Composite getParent() {
+        return parent;
+    }
+
+    @Override
+    public void setParent(Composite parent) {
+        this.parent = parent;
+    }
+
+    @Override
+    public void setChild(int index, Component component) {
+        components.set(index, component);
+    }
+
+    @Override
+    public String toString() {
+        return "Composite{" +
+                "components=" + components +
+                ", name='" + name + '\'' +
+                ", value='" + value + '\'' +
+                ", parent=" + parent +
+                '}';
     }
 }
