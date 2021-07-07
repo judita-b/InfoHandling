@@ -24,15 +24,4 @@ public class ExpressionCalculatorTest {
         Assert.assertNotNull(result);
         Assert.assertEquals(10, result, 0.01);
     }
-
-    @Test
-    public void expressionCalculatorTestWithNegativeNumbers() {
-        final String expression = "-3 x +";
-
-        ExpressionCalculator expressionCalculator = new ExpressionCalculator();
-        Integer result = expressionCalculator.calculate(expression, variables);
-
-        Assert.assertNotNull(result);
-        Assert.assertEquals(4, result, 0.01);
-    }
 }
