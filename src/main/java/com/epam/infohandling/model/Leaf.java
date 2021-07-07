@@ -68,49 +68,32 @@ public class Leaf implements Component {
     }
 
     @Override
-    public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (!(o instanceof Leaf)) {
-            return false;
-        }
-        Leaf leaf = (Leaf) o;
-        return Objects.equals(getValue(), leaf.getValue()) && Objects.equals(getName(), leaf.getName()) && Objects.equals(getParent(), leaf.getParent());
+    public int hashCode() {
+        final int prime = 31;
+        int result = 1;
+        result = prime * result + ((value == null) ? 0 : value.hashCode());
+        return result;
     }
 
     @Override
-    public int hashCode() {
-        return Objects.hash(getValue(), getName(), getParent());
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        Leaf other = (Leaf) obj;
+        if (value == null) {
+            if (other.value != null) {
+                return false;
+            }
+        } else if (!value.equals(other.value)) {
+            return false;
+        }
+        return true;
     }
-
-//    @Override
-//    public int hashCode() {
-//        final int prime = 31;
-//        int result = 1;
-//        result = prime * result + ((value == null) ? 0 : value.hashCode());
-//        return result;
-//    }
-//
-//    @Override
-//    public boolean equals(Object obj) {
-//        if (this == obj) {
-//            return true;
-//        }
-//        if (obj == null) {
-//            return false;
-//        }
-//        if (getClass() != obj.getClass()) {
-//            return false;
-//        }
-//        Leaf other = (Leaf) obj;
-//        if (value == null) {
-//            if (other.value != null) {
-//                return false;
-//            }
-//        } else if (!value.equals(other.value)) {
-//            return false;
-//        }
-//        return true;
-//    }
 }
